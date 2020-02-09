@@ -11,6 +11,7 @@ type Server struct {
 	ID     int    `json:"id"`
 	Name   string `json:"name"`
 	Status string `json:"status"`
+	IP     string `json:"ip"`
 }
 
 type repo struct {
@@ -34,10 +35,16 @@ func (r *repo) List(ctx context.Context) ([]Server, error) {
 
 	servers := make([]Server, len(droplets))
 	for i, droplet := range droplets {
+		ip, err := droplet.PublicIPv4()
+		if err != nil {
+			return nil, err
+		}
+
 		servers[i] = Server{
 			ID:     droplet.ID,
 			Name:   droplet.Name,
 			Status: droplet.Status,
+			IP:     ip,
 		}
 	}
 
