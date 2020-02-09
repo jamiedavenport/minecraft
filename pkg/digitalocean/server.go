@@ -8,8 +8,9 @@ import (
 )
 
 type Server struct {
-	ID   int
-	Name string
+	ID     int    `json:"id"`
+	Name   string `json:"name"`
+	Status string `json:"status"`
 }
 
 type repo struct {
@@ -26,7 +27,21 @@ func (r *repo) Start(ctx context.Context, id int) error {
 }
 
 func (r *repo) List(ctx context.Context) ([]Server, error) {
-	return nil, nil
+	droplets, _, err := r.client.Droplets.ListByTag(ctx, "minecraft", &godo.ListOptions{})
+	if err != nil {
+		return nil, err
+	}
+
+	servers := make([]Server, len(droplets))
+	for i, droplet := range droplets {
+		servers[i] = Server{
+			ID:     droplet.ID,
+			Name:   droplet.Name,
+			Status: droplet.Status,
+		}
+	}
+
+	return servers, nil
 }
 
 func (r *repo) Stop(ctx context.Context, id int) error {

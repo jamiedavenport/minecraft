@@ -61,6 +61,13 @@ functions:
           path: stop
           method: post
           private: true
+  list:
+    handler: bin/list
+    events:
+      - http:
+          path: list
+          method: get
+          private: true
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
 # events:
