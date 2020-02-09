@@ -4,10 +4,9 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/spf13/viper"
-
 	"github.com/jamiedavenport/minecraft/pkg/config"
 	"github.com/jamiedavenport/minecraft/pkg/digitalocean"
+	"github.com/spf13/viper"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -35,7 +34,7 @@ func Handler(ctx context.Context, request Request) (Response, error) {
 	}
 
 	doClient := digitalocean.New(viper.GetString("do-api-key"))
-	err = doClient.Start(ctx, body.ID)
+	err = doClient.Stop(context.TODO(), body.ID)
 	if err != nil {
 		return Response{StatusCode: 500}, err
 	}

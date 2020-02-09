@@ -12,6 +12,8 @@ provider:
   name: aws
   runtime: go1.x
   region: eu-west-2
+  environment:
+    MINECRAFT_DO_API_KEY: ${ssm:/aws/reference/secretsmanager/minecraft/do_api_key~true}
 
 # you can overwrite defaults here
 #  stage: dev
@@ -43,12 +45,18 @@ package:
     - ./bin/**
 
 functions:
-  hello:
-    handler: bin/hello
+  start:
+    handler: bin/start
     events:
       - http:
-          path: hello
-          method: get
+          path: start
+          method: post
+  stop:
+    handler: bin/stop
+    events:
+      - http:
+          path: stop
+          method: post
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
 # events:
