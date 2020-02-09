@@ -9,5 +9,7 @@ docker run -di \
   --volume "${DATA_DIR}:/data" \
   -p 25565:25565 \
   -e EULA=TRUE \
+  -e MEMORY=1G \
+  --restart always \
   itzg/minecraft-server
   
