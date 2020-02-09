@@ -15,6 +15,10 @@
     {
       "type": "shell",
       "script": "scripts/install-docker.sh"
+    },
+    {
+      "type": "shell",
+      "script": "scripts/run-minecraft.sh"
     }
   ]
 }

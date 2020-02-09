@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo yum install -y yum-utils \
   device-mapper-persistent-data \
   lvm2
@@ -8,4 +10,5 @@ sudo yum-config-manager \
 
 sudo yum install -y docker-ce docker-ce-cli containerd.io --nobest
 
+sudo systemctl start docker
 sudo systemctl enable docker
