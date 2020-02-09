@@ -1,7 +1,7 @@
 # Minecraft
 Minecraft-as-a-server
 
-## Configuration
+## Configuration
 
 ### Secrets
 
