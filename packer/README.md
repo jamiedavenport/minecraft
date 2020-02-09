@@ -1,4 +1,4 @@
-# Packer
+# Packer
 
 This directory contains Packer configuration for the Minecraft base image. 
 
