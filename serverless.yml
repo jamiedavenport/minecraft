@@ -14,6 +14,8 @@ provider:
   region: eu-west-2
   environment:
     MINECRAFT_DO_API_KEY: ${ssm:/aws/reference/secretsmanager/minecraft/do_api_key~true}
+  apiKeys:
+    - personal
 
 # you can overwrite defaults here
 #  stage: dev
@@ -51,12 +53,14 @@ functions:
       - http:
           path: start
           method: post
+          private: true
   stop:
     handler: bin/stop
     events:
       - http:
           path: stop
           method: post
+          private: true
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
 # events:
