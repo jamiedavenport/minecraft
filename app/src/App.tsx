@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import Client from "./client";
+import KeyForm from "./components/KeyForm";
 
 const Container = styled.div`
   display: flex;
@@ -30,31 +32,23 @@ const Footer = styled.div`
 `;
 
 const App = () => {
-  const [apiKey, setApiKey] = useState("");
-  const [apiKeySubmitted, setApiKeySubmitted] = useState(false);
+  const [client, setClient] = useState<Client | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (apiKey.trim() !== "") {
-      setApiKeySubmitted(true);
-    }
+  const handleSubmit = (key: string) => {
+    setClient(new Client(key));
   };
 
-  const handleApiKeyChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setApiKey(e.currentTarget.value);
-  };
+  let scene;
+  if (!client) {
+    scene = <KeyForm onSubmit={handleSubmit} />;
+  } else {
+    scene = <h1>List</h1>;
+  }
 
   return (
     <Container>
       <Logo>Minecraft</Logo>
-      <Body>
-        <form onSubmit={handleSubmit}>
-          <label>API Key</label>
-          <input type="password" value={apiKey} onChange={handleApiKeyChange} />
-          <button type="submit">Go</button>
-        </form>
-      </Body>
+      <Body>{scene}</Body>
       <Footer>Copyright &copy; Jamie Davenport 2020</Footer>
     </Container>
   );
