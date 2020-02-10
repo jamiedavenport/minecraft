@@ -14,7 +14,7 @@ export default class Client {
   }
 
   async start(id: number): Promise<void> {
-    const resp = await fetch(`${apiUrl}/start`, {
+    await fetch(`${apiUrl}/start`, {
       method: "POST",
       body: JSON.stringify({
         id
@@ -26,7 +26,7 @@ export default class Client {
   }
 
   async stop(id: number): Promise<void> {
-    const resp = await fetch(`${apiUrl}/stop`, {
+    await fetch(`${apiUrl}/stop`, {
       method: "POST",
       body: JSON.stringify({
         id
