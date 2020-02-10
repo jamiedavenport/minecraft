@@ -23,7 +23,7 @@ const ServerList: React.FC<Props> = ({ client }) => {
     <ul>
       {servers.map(server => (
         <li key={server.id}>
-          {server.id} {server.name} {server.status}
+          {server.id} {server.name} {server.ip} {server.status}
         </li>
       ))}
     </ul>
