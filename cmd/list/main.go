@@ -34,6 +34,10 @@ func Handler(ctx context.Context) (Response, error) {
 		StatusCode:      200,
 		Body:            string(body),
 		IsBase64Encoded: false,
+		Headers: map[string]string{
+			"Access-Control-Allow-Origin":      "*",
+			"Access-Control-Allow-Credentials": "true",
+		},
 	}
 
 	return resp, nil

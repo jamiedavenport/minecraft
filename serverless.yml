@@ -54,6 +54,7 @@ functions:
           path: start
           method: post
           private: true
+          cors: true
   stop:
     handler: bin/stop
     events:
@@ -61,6 +62,7 @@ functions:
           path: stop
           method: post
           private: true
+          cors: true
   list:
     handler: bin/list
     events:
@@ -68,6 +70,7 @@ functions:
           path: list
           method: get
           private: true
+          cors: true
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
 # events:

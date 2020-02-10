@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Client from "./client";
 import KeyForm from "./components/KeyForm";
+import ServerList from "./components/ServerList";
 
 const Container = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ const App = () => {
   if (!client) {
     scene = <KeyForm onSubmit={handleSubmit} />;
   } else {
-    scene = <h1>List</h1>;
+    scene = <ServerList client={client} />;
   }
 
   return (
