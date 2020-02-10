@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-interface Props {
+type Props = {
   onSubmit: (key: string) => void;
-}
+};
 
 const KeyForm: React.FC<Props> = ({ onSubmit }) => {
   const [value, setValue] = useState("");

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Client from "../client";
 import { Server } from "../types";
 
-interface ButtonProps {
+type ButtonProps = {
   loading: boolean;
   server: Server;
   handleStart: () => void;
   handleStop: () => void;
-}
+};
 
 const Button: React.FC<ButtonProps> = ({
   loading,
@@ -26,11 +26,11 @@ const Button: React.FC<ButtonProps> = ({
   }
 };
 
-interface Props {
+type Props = {
   client: Client;
   server: Server;
   onChange: (updated: Server) => void;
-}
+};
 
 const ServerItem: React.FC<Props> = ({ client, server, onChange }) => {
   const [loading, setLoading] = useState(false);

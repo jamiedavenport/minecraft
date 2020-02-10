@@ -5,9 +5,9 @@ import { Server } from "../types";
 import { useEffect } from "react";
 import ServerItem from "./ServerItem";
 
-interface Props {
+type Props = {
   client: Client;
-}
+};
 
 const ServerList: React.FC<Props> = ({ client }) => {
   const [servers, setServers] = useState<Server[]>([]);
