@@ -8,7 +8,6 @@ import globalStyles from "./globalStyles";
 ReactDOM.render(
   <>
     <Global styles={globalStyles} />
-
     <App />
   </>,
   document.getElementById("root")
