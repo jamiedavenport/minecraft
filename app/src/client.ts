@@ -12,4 +12,28 @@ export default class Client {
     });
     return await resp.json();
   }
+
+  async start(id: number): Promise<void> {
+    const resp = await fetch(`${apiUrl}/start`, {
+      method: "POST",
+      body: JSON.stringify({
+        id
+      }),
+      headers: {
+        "X-API-KEY": this.apiKey
+      }
+    });
+  }
+
+  async stop(id: number): Promise<void> {
+    const resp = await fetch(`${apiUrl}/stop`, {
+      method: "POST",
+      body: JSON.stringify({
+        id
+      }),
+      headers: {
+        "X-API-KEY": this.apiKey
+      }
+    });
+  }
 }

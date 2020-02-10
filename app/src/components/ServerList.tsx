@@ -3,6 +3,7 @@ import Client from "../client";
 import { useState } from "react";
 import { Server } from "../types";
 import { useEffect } from "react";
+import ServerItem from "./ServerItem";
 
 interface Props {
   client: Client;
@@ -21,11 +22,23 @@ const ServerList: React.FC<Props> = ({ client }) => {
 
   return (
     <ul>
-      {servers.map(server => (
-        <li key={server.id}>
-          {server.id} {server.name} {server.ip} {server.status}
-        </li>
-      ))}
+      {servers.map((server, index) => {
+        const handleChange = (updated: Server) => {
+          const newServers = [...servers];
+          newServers[index] = updated;
+          setServers(newServers);
+        };
+
+        return (
+          <li key={server.id}>
+            <ServerItem
+              onChange={handleChange}
+              client={client}
+              server={server}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 };
