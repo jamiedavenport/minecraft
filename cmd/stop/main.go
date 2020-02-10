@@ -6,6 +6,7 @@ import (
 
 	"github.com/jamiedavenport/minecraft/pkg/config"
 	"github.com/jamiedavenport/minecraft/pkg/digitalocean"
+	"github.com/jamiedavenport/minecraft/pkg/function"
 	"github.com/spf13/viper"
 
 	"github.com/aws/aws-lambda-go/events"
@@ -42,6 +43,7 @@ func Handler(ctx context.Context, request Request) (Response, error) {
 	resp := Response{
 		StatusCode:      204,
 		IsBase64Encoded: false,
+		Headers:         function.CorsHeaders(),
 	}
 
 	return resp, nil

@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 
+	"github.com/jamiedavenport/minecraft/pkg/function"
+
 	"github.com/spf13/viper"
 
 	"github.com/jamiedavenport/minecraft/pkg/config"
@@ -34,10 +36,7 @@ func Handler(ctx context.Context) (Response, error) {
 		StatusCode:      200,
 		Body:            string(body),
 		IsBase64Encoded: false,
-		Headers: map[string]string{
-			"Access-Control-Allow-Origin":      "*",
-			"Access-Control-Allow-Credentials": "true",
-		},
+		Headers:         function.CorsHeaders(),
 	}
 
 	return resp, nil
