@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 const Container = styled.div`
@@ -30,14 +30,29 @@ const Footer = styled.div`
 `;
 
 const App = () => {
+  const [apiKey, setApiKey] = useState("");
+  const [apiKeySubmitted, setApiKeySubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (apiKey.trim() !== "") {
+      setApiKeySubmitted(true);
+    }
+  };
+
+  const handleApiKeyChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setApiKey(e.currentTarget.value);
+  };
+
   return (
     <Container>
       <Logo>Minecraft</Logo>
       <Body>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label>API Key</label>
-          <input type="text" />
-          <button>Go</button>
+          <input type="password" value={apiKey} onChange={handleApiKeyChange} />
+          <button type="submit">Go</button>
         </form>
       </Body>
       <Footer>Copyright &copy; Jamie Davenport 2020</Footer>
